@@ -1,12 +1,13 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Jsonp, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { WEATHER_API_KEY }      from './api.config';
 
 
 @Injectable()
 export class WeatherService {
   constructor (private jsonp: Jsonp) {}
-  private weatherUrl = 'https://api.forecast.io/forecast/251c3d112bc0f6cd681e43aef329f4bc/37.8267,-122.423';
+  private weatherUrl = 'https://api.forecast.io/forecast/'+ WEATHER_API_KEY + '/37.8267,-122.423';
   weatherlist (): Observable<any[]> {
     let params = new URLSearchParams();
     params.set('callback', 'JSONP_CALLBACK');
