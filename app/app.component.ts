@@ -12,9 +12,4 @@ import { HTTP_PROVIDERS, JSONP_PROVIDERS } from '@angular/http';
   directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
-  // skycons: any;
-
-  // constructor(){
-  //   this.skycons = Skycons;
-  // }
 }
