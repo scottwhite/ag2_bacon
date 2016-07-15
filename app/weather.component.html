@@ -1,0 +1,9 @@
+<div class="container-fluid">
+<h2>Weather</h2>
+<div>{{ weather.summary }}</div>
+<ul class="weather-list">
+  <li *ngFor="let day of weather.data" (click)="selectWeather(day)">
+    <weather-icon id={{day.time}} name={{day.icon}}></weather-icon><div class="weather-summary">{{day.summary}}</div>
+  </li>
+</ul>
+</div>
