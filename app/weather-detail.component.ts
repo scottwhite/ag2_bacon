@@ -4,7 +4,7 @@ import { WeatherIconComponent } from './weather-icon.component';
 
 @Component({
   selector: 'weather-detail',
-  templateUrl:'/app/weather-detail.component.html',
+  templateUrl:'./weather-detail.component.html',
   directives: [WeatherIconComponent],
   providers: [WeatherService]
 })

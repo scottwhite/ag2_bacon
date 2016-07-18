@@ -3,7 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   selector: 'weather',
-  templateUrl: '/app/home.component.html',
+  templateUrl: './home.component.html',
   directives: [ROUTER_DIRECTIVES]
 })
 

@@ -6,8 +6,8 @@ import { HTTP_PROVIDERS, JSONP_PROVIDERS } from '@angular/http';
 
 @Component({
   selector: 'main-app',
-  templateUrl: '/app/app.component.html',
-  styleUrls: ['/app/app.component.css'],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   providers: [HTTP_PROVIDERS, JSONP_PROVIDERS],
   directives: [ROUTER_DIRECTIVES]
 })

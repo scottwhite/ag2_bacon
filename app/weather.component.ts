@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'weather',
-  templateUrl: '/app/weather.component.html',
+  templateUrl: './weather.component.html',
   styles: ['ul { list-style: none }', 'li {cursor: pointer}'],
   directives: [WeatherIconComponent],
   providers: [WeatherService]

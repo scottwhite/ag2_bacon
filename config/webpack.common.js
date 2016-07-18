@@ -11,7 +11,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.ts']
+    extensions: ['', '.js', '.ts'],
+    root: helpers.root('app')
   },
 
   module: {
