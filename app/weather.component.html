@@ -3,7 +3,10 @@
 <div>{{ weather.summary }}</div>
 <ul class="weather-list">
   <li *ngFor="let day of weather.data" (click)="selectWeather(day)">
+    <div class="weather-day">{{day.time | formatWeatherDate}}</div>
     <weather-icon id={{day.time}} name={{day.icon}}></weather-icon><div class="weather-summary">{{day.summary}}</div>
+    <div class="weather-temp"><label>Low</label> {{day.temperatureMin}}&deg; F</div>
+    <div class="weather-temp"><label>High</label> {{day.temperatureMax}}&deg; F</div>
   </li>
 </ul>
 </div>

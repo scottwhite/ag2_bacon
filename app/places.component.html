@@ -1,0 +1,8 @@
+<div class="container-fluid">
+<h2>Places</h2>
+<ul class="places-list">
+  <li *ngFor="let item of locations.predictions">
+    <a (click)="selectPlace(item)">{{item.description}}</a>
+  </li>
+</ul>
+</div>

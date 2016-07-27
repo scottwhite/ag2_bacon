@@ -6,7 +6,7 @@ import { WeatherDetailComponent } from './weather-detail.component';
 
 export const routes: RouterConfig = [
   { path: '', component: HomeComponent },
-  { path: 'weather', component: WeatherComponent },
+  { path: 'weather/:latlng', component: WeatherComponent },
   { path: 'weather/details', component: WeatherDetailComponent }
 ];
 

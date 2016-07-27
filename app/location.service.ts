@@ -1,27 +1,25 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
-import { GOOGLE_API_KEY }      from './api.config';
 
 
 @Injectable()
 export class LocationService {
   constructor (private http: Http) {}
-  private autocompleteUrl = 'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=' + GOOGLE_API_KEY;
-  private placeDetailsUrl = 'https://maps.googleapis.com/maps/api/place/details/json?key=' + GOOGLE_API_KEY;
+  private autocompleteUrl = 'http://localhost:3000/locations/';
+  private placeDetailsUrl = 'http://localhost:3000/locations/details/';
 
-  places (search): Observable<any[]> {
-    let params = new URLSearchParams();
-    params.set('input', search);
-    return this.http.get(this.autocompleteUrl, {search: params})
-                    .map(res=> res.json().predictions)
+  places (search): Observable<any> {
+    let url = this.autocompleteUrl + search;
+    let i=0;
+    return this.http.get(url)
+                    .map(res=> res.json())
                     .catch(this.handleError);
   }
 
   details (placeid): Observable<any> {
-    let params = new URLSearchParams();
-    params.set('palceid', placeid);
-    return this.http.get(this.placeDetailsUrl, {search: params})
+    let url = this.placeDetailsUrl + placeid;
+    return this.http.get(url)
                     .map(res=> res.json())
                     .catch(this.handleError);
   }

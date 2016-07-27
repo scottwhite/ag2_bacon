@@ -10,9 +10,21 @@
       integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
       crossorigin="anonymous">
     <script src="skycons.js"></script>
+    <script>
+      test = {};
+      let bacon = function(pos){
+        test.location = pos.coords;
+      }
+      let bacon_not = function(err){
+        console.error(err);
+      }
+
+      navigator.geolocation.getCurrentPosition(bacon, bacon_not);
+    </script>
   </head>
   <body>
     <base href="/">
     <main-app>Loading...</main-app>
   </body>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB-1LcBgPGBRNifunGIfIRo4SjCT-VJAE&libraries=places" async defer></script>
 </html>

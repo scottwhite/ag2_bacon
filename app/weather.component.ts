@@ -1,27 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Pipe } from '@angular/core';
 import { WeatherIconComponent } from './weather-icon.component';
 import { WeatherService } from './weather.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { WeatherDatePipe } from './weather.date.pipe';
 
 @Component({
   selector: 'weather',
   templateUrl: './weather.component.html',
-  styles: ['ul { list-style: none }', 'li {cursor: pointer}'],
+  styles: ['ul { list-style: none }', 'li {cursor: pointer}', '.weather-temp{display:inline-block;}'],
   directives: [WeatherIconComponent],
-  providers: [WeatherService]
+  providers: [WeatherService],
+  pipes: [WeatherDatePipe]
 })
 
 export class WeatherComponent {
   weather: any;
   error: any;
-  constructor(private router: Router, private ws: WeatherService){
+  constructor(private route: ActivatedRoute, private router: Router, private ws: WeatherService){
     this.weather = {data:[]};
   }
   ngOnInit() {
-    this._list();
+    this.route.params.subscribe(params => {
+     let id = params['latlng'];
+     this._list(id);
+   });
   }
-  _list(){
-    this.ws.weatherlist().subscribe(
+  _list(latlng){
+    this.ws.weatherlist(latlng).subscribe(
       data => this.weather = <any>data,
       error => this.error = <any>error
     );

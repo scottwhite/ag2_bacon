@@ -1,26 +1,24 @@
 import { Injectable }     from '@angular/core';
-import { Http, Response, Jsonp, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import { WEATHER_API_KEY }      from './api.config';
 
 
 @Injectable()
 export class WeatherService {
-  constructor (private jsonp: Jsonp) {}
-  private weatherUrl = 'https://api.forecast.io/forecast/'+ WEATHER_API_KEY + '/37.8267,-122.423';
-  weatherlist (): Observable<any[]> {
-    let params = new URLSearchParams();
-    params.set('callback', 'JSONP_CALLBACK');
-    return this.jsonp.get(this.weatherUrl, {search: params})
+  constructor (private http: Http) {}
+  private weatherUrl = 'http://localhost:3000/weather/';
+  weatherlist (latlng): Observable<any[]> {
+    let url = this.weatherUrl + latlng;
+    return this.http.get(url)
                     .map(res=> res.json().daily)
                     .catch(this.handleError);
   }
 
   weathersummary (): Observable<any[]> {
     let params = new URLSearchParams();
-    params.set('callback', 'JSONP_CALLBACK');
     params.set('exclude', 'minutely, hourly, daily, alerts, flags');
-    return this.jsonp.get(this.weatherUrl, {search: params})
+    return this.http.get(this.weatherUrl, {search: params})
                     .map(res=>res.json().currently)
                     .catch(this.handleError);
   }
