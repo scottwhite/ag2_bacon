@@ -7,7 +7,7 @@ import { WeatherDatePipe } from './weather.date.pipe';
 @Component({
   selector: 'weather',
   templateUrl: './weather.component.html',
-  styles: ['ul { list-style: none }', 'li {cursor: pointer}', '.weather-temp{display:inline-block;}'],
+  styles: ['ul { list-style: none }', 'li {cursor: pointer}', '.weather-temp{display:inline-block;maring-right:10px;}'],
   directives: [WeatherIconComponent],
   providers: [WeatherService],
   pipes: [WeatherDatePipe]
